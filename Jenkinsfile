@@ -15,8 +15,8 @@ pipeline {
         }
         stage('deploy'){
             steps{
-                sh 'ssh root@16.171.12.1
-                sh 'scp /home/slave/workspace/apachetomcat/target/hello-world-war-1.0.0.war  root@172.31.47.22:/opt/apache-tomcat8./webapps
+                sh 'ssh root@172.31.47.70
+                sh 'scp /home/slave/workspace/apachetomcat/target/hello-world-war-1.0.0.war  root@172.31.47.70:/opt/apache-tomcat8.5.98/webapps
             }
         }    
     }
