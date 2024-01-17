@@ -16,7 +16,7 @@ pipeline {
         stage('deploy'){
             steps{
                // sh 'ssh root@172.31.47.22'
-                ssh -o StrictHostKeyChecking=no root@172.31.47.22
+                sh  'ssh -o StrictHostKeyChecking=no root@172.31.47.22'
                 sh 'scp /home/slave1/workspace/Samplepipeline/target/hello-world-war-1.0.0.war  root@172.31.47.22:/opt/apache-tomcat-8.5.98/webapps'
             }
         }    
