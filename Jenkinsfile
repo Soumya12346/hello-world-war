@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                sh 'pwd'
-                sh 'ls'
-                sh 'rm -rf slave'
+                sh 'rm -rf  hello-world-war'
                 sh 'git clone https://github.com/Soumya12346/hello-world-war/'
             }
         }
