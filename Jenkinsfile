@@ -47,7 +47,7 @@ pipeline {
                     }
                 }
                 stage('Deploy to any') {
-                    agent any
+                    agent { label 'slave' }
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
 			sh "docker rm -f my_container_7"
