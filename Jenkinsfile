@@ -46,7 +46,7 @@ pipeline {
                     }
                 }
                 stage('Deploy to any') {
-                    agent any
+                    agent { label 'Build-inNode' }
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
                         sh "docker run -d --name my_container_7 -p 8086:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
