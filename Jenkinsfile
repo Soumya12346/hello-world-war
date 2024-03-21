@@ -42,14 +42,14 @@ pipeline {
                     agent { label 'slave' }
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
-                        sh "docker run -d --name my_container_3 -p 8085:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
+                        sh "docker run -d --name my_container_6 -p 8085:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
                     }
                 }
                 stage('Deploy to any') {
                     agent any
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
-                        sh "docker run -d --name my_container_5 -p 8086:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
+                        sh "docker run -d --name my_container_7 -p 8086:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
                     }
                 }
             }
