@@ -39,7 +39,7 @@ pipeline {
         stage('Pull and Deploy') {
             parallel {
                 stage('Deploy to slave') {
-                    agent { label 'master' }
+                    agent { label 'slave' }
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
 			sh "docker rm -f my_container_6"
