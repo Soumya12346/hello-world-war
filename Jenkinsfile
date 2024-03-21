@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo "inside build"'
                 dir("hello-world-war") {
                     sh 'echo "inside dir"'    
-                    sh 'docker build -t my_jenkins:${BUILD_NUMBER} .'
+                    sh 'docker build -t tomcat-file:${BUILD_NUMBER} .'
                 }
             }
         }
