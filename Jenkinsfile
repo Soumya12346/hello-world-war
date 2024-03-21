@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker' }
+    agent { label 'slave' }
     environment {     
         DOCKERHUB_CREDENTIALS= credentials('dockerhub')   
     }
@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo "inside build"'
                 dir("hello-world-war") {
                     sh 'echo "inside dir"'    
-                    sh 'docker build -t tomcat-file:${BUILD_NUMBER} .'
+                    sh 'docker build -t my_jenkins:${BUILD_NUMBER} .'
                 }
             }
         }
@@ -38,15 +38,15 @@ pipeline {
         
         stage('Pull and Deploy') {
             parallel {
-                stage('Deploy to node1') {
-                    agent { label 'node1' }
+                stage('Deploy to slave') {
+                    agent any 
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
                         sh "docker run -d --name my_container_1 -p 8085:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
                     }
                 }
                 stage('Deploy to any') {
-                    agent { label 'slave2' }
+                    agent any
                     steps {
                         sh "docker pull soumya12346/myubuntu:${BUILD_NUMBER}"
                         sh "docker run -d --name my_container_2 -p 8086:8080 soumya12346/myubuntu:${BUILD_NUMBER}"
